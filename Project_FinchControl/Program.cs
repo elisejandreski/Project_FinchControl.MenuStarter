@@ -10,11 +10,12 @@ namespace Project_FinchControl
     //
     // Title: Finch Control - Menu Starter
     // Description: Starter solution with the helper methods,
-    //              opening and closing screens, and the menu
+    //              opening and closing screens, the menu,
+    //              and added talent show options
     // Application Type: Console
-    // Author: Velis, John
-    // Dated Created: 1/22/2020
-    // Last Modified: 1/25/2020
+    // Author: Jandreski, Elise
+    // Dated Created: 11/11/2020
+    // Last Modified: 11/24/2020
     //
     // **************************************************
 
@@ -80,7 +81,7 @@ namespace Project_FinchControl
                 {
                     case "a":
                         bool robotConnected = DisplayConnectFinchRobot(finchRobot);
-                        DisplayFinchRobotConnectionStatus(robotConnected, finchRobot);
+                        DisplayFinchRobotConnectionStatus(robotConnected, finchRobot); 
                         break;
 
                     case "b":
@@ -747,12 +748,44 @@ namespace Project_FinchControl
             
             if (robotConnected) 
             {
+                #region assign frequencies to notes
+                // first octave frequencies in Hz
+                int c1 = 33, cSharp1 = 35, d1 = 37, dSharp1 = 39, e = 41, f1 = 44, fSharp1 = 46, g1 = 49, gSharp1 = 52, a1 = 55, aSharp1 = 58, b1 = 62;
+
+                // second octave frequencies in Hz
+                int c2 = 65, cSharp2 = 69, d2 = 73, dSharp2 = 78, e2 = 82, f2 = 87, fSharp2 = 92, g2 = 98, gSharp2 = 104, a2 = 110, aSharp2 = 117, b2 = 123;
+
+                // third octave frequencies in Hz
+                int c3 = 131, cSharp3 = 139, d3 = 147, dSharp3 = 156, e3 = 165, f3 = 175, fSharp3 = 185, g3 = 196, gSharp3 = 208, a3 = 220, aSharp3 = 233, b3 = 247;
+
+                // fourth octave frequencies in Hz
+                int c4 = 262, cSharp4 = 277, d4 = 294, dSharp4 = 311, e4 = 330, f4 = 349, fSharp4 = 370, g4 = 392, gSharp4 = 415, a4 = 440, aSharp4 = 466, b4 = 494;
+                #endregion
+
+                #region assign time values to beats
+
+                int quarter = 522;
+                int eighth = 260;
+                int dottedQuarter = 781;
+                int dottedEighth = 391;
+                int sixteenth = 130;
+                int dottedSixteenth = 195;
+                int half = 1043;
+                int dottedHalf = 1565;
+                int whole = 2087;
+                int dottedWhole = 3130;
+
+                #endregion
+
                 //turn lights and buzzer on then off to confirm that finch has succesfully connected
-                finchRobot.setLED(255, 100, 255);
-                finchRobot.noteOn(262);
-                finchRobot.wait(2000);
-                finchRobot.setLED(0, 0, 0);
+                finchRobot.setLED(0, 155, 155);
+                SingleMusicNote(a2, dottedEighth, finchRobot);
+                finchRobot.setLED(0, 155, 255);
+                SingleMusicNote(fSharp3, sixteenth, finchRobot);
+                finchRobot.setLED(0, 0, 255);
+                SingleMusicNote(d4, half, finchRobot);
                 finchRobot.noteOff();
+                finchRobot.setLED(0, 0, 0);
 
                 //display connection successful message
                 Console.WriteLine("Finch has been succesfully connected");
