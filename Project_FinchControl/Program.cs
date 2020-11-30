@@ -1389,16 +1389,16 @@ namespace Project_FinchControl
             //
             //  get command parameter values and validate
             //
-            GetValidInteger("\t\nEnter motor speed [1 - 255]:", 1, 255, out commandParameters.motorSpeed);
-            GetValidInteger("\t\nEnter LED brightness [1-255]", 1, 255, out commandParameters.ledBrightness);
-            GetValidDouble("\t\nEnter wait in seconds [0-10]", 0, 10, out commandParameters.waitSeconds);
+            GetValidInteger("\tEnter motor speed [1 - 255]:", 1, 255, out commandParameters.motorSpeed);
+            GetValidInteger("\tEnter LED brightness [1-255]", 1, 255, out commandParameters.ledBrightness);
+            GetValidDouble("\tEnter wait in seconds [0-10]", 0, 10, out commandParameters.waitSeconds);
 
             //
             // echo command parameter values to user
             //
-            Console.WriteLine($"\t\nMotor Speed: {commandParameters.motorSpeed}");
-            Console.WriteLine($"\tLED Brightness: {commandParameters.ledBrightness}");
-            Console.WriteLine($"\tWait command duration: {commandParameters.waitSeconds}s");
+            Console.WriteLine($"\n\t\tMotor Speed: {commandParameters.motorSpeed}");
+            Console.WriteLine($"\n\t\tLED Brightness: {commandParameters.ledBrightness}");
+            Console.WriteLine($"\n\t\tWait command duration: {commandParameters.waitSeconds}s");
 
             DisplayMenuPrompt("User Programming");
 
@@ -1492,7 +1492,7 @@ namespace Project_FinchControl
         {
             foreach (Command command in commands)
             {
-                Console.WriteLine($"\t\n{command}");
+                Console.WriteLine($"\t{command}");
             }
 
             DisplayMenuPrompt("User Programming");
