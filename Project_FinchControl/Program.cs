@@ -35,6 +35,7 @@ namespace Project_FinchControl
         LEDON,
         LEDOFF,
         GETTEMPERATURE,
+        GETLIGHTSENSORREADING,
         DONE
     }
     class Program
@@ -1463,7 +1464,7 @@ namespace Project_FinchControl
             // list commands
             //
             Console.WriteLine("\t\nList of available commands: ");
-            Console.WriteLine("\t\n--MOVEFORWARD, \t\n--MOVEBACKWARD, \t\n--STOPMOTORS, \t\n--WAIT, \t\n--TURNRIGHT, \t\n--TURNLEFT, \t\n--LEDON, \t\n--LEDOFF, \t\n--GETTEMPERATURE, \t\n--DONE");
+            Console.WriteLine("\t\n--MOVEFORWARD, \t\n--MOVEBACKWARD, \t\n--STOPMOTORS, \t\n--WAIT, \t\n--TURNRIGHT, \t\n--TURNLEFT, \t\n--LEDON, \t\n--LEDOFF, \t\n--GETTEMPERATURE, \t\n--GETLIGHTSENSORREADING \t\n--DONE");
 
             //
             // get user input for commands as long as DONE is not entered
@@ -1570,6 +1571,10 @@ namespace Project_FinchControl
 
                     case Command.GETTEMPERATURE:
                         displayCommandPerformed = Command.GETTEMPERATURE.ToString() + $" Temperature reading: {finchRobot.getTemperature().ToString("n2")}";
+                        break;
+
+                    case Command.GETLIGHTSENSORREADING:
+                        displayCommandPerformed = Command.GETLIGHTSENSORREADING.ToString() + $" Left light sensor reading: {finchRobot.getLeftLightSensor().ToString("n2")} \n Right light sensor reading: {finchRobot.getRightLightSensor().ToString("n2")}";
                         break;
 
                     case Command.DONE:
